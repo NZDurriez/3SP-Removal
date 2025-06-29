@@ -60,8 +60,15 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover:not(.copied) {
   background: #0056b3;
+}
+
+/* Green style for copied state */
+button.copied {
+  background-color: #28a745 !important; /* green */
+  color: white !important;
+  cursor: default;
 }
 
 .output {
