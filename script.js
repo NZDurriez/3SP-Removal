@@ -64,14 +64,17 @@ ${selectedStaffRole}`;
   outputBox.textContent = message;
   document.getElementById("fullOutputContainer").style.display = "block";
   copyBtn.style.display = "block";
+  // Reset copy button in case it was previously copied
+  copyBtn.textContent = "Copy to Clipboard";
+  copyBtn.classList.remove("copied");
+  copyBtn.disabled = false;
 });
 
 copyBtn.addEventListener("click", () => {
   const text = document.getElementById("outputFull3SP").textContent;
   navigator.clipboard.writeText(text).then(() => {
     copyBtn.textContent = "Copied!";
-    setTimeout(() => {
-      copyBtn.textContent = "Copy to Clipboard";
-    }, 2000);
+    copyBtn.classList.add("copied"); // add green style
+    copyBtn.disabled = true;         // disable button until refresh
   });
 });
